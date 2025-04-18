@@ -87,11 +87,14 @@ app.get('/api', (req, res) => {
     });
 });
 
+<<<<<<< HEAD
 // Route to serve Insight.html for /insights.html request
 app.get('/insights.html', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/public', 'Insight.html'));
 });
 
+=======
+>>>>>>> bc126e1 (Push project to finatrackkk repository)
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

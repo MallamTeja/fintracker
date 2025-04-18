@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinTrack - Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      /* Light theme */
+      --bg-light: #ffffff;
+      --text-light: #1a1a1a;
+      --card-bg-light: #ffffff;
+      --primary-light: #2563eb;
+      --primary-hover-light: #1d4ed8;
+      --border-light: #e2e8f0;
+      
+      /* Dark theme */
+      --bg-dark: #1e293b;
+      --text-dark: #f8fafc; 
+      --card-bg-dark: #1e293b;
+      --primary-dark: #4f46e5;
+      --primary-hover-dark: #4338ca;
+      --border-dark: #334155;
+    }
+
+    /* Force blue color for sidebar nav links with text-blue-500 class */
+    aside nav a.text-blue-500 {
+      color: #3b82f6 !important;
+    }
+
+    [data-theme="light"] {
+      --bg: var(--bg-light);
+      --text-color: var(--text-light);
+      --card-bg: var(--card-bg-light);
+      --primary: var(--primary-light);
+      --primary-hover: var(--primary-hover-light);
+      --border: var(--border-light);
+    }
+
+    [data-theme="dark"] {
+      --bg: var(--bg-dark);
+      --text-color: var(--text-dark);
+      --card-bg: var(--card-bg-dark);
+      --primary: var(--primary-dark);
+      --primary-hover: var(--primary-hover-dark);
+      --border: var(--border-dark);
+    }
+
+    [data-theme="light"] {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    [data-theme="light"] nav a {
+      background-color: white;
+      color: #1a1a1a !important;
+    }
+
+    [data-theme="light"] nav a:hover:not(.active) {
+      background-color: #3b82f6;
+      color: #1a1a1a !important;
+    }
+
+    [data-theme="light"] nav a.active {
+      background-color: #e5e7eb;
+    }
+
+    [data-theme="light"] #profileButton {
+      background-color: white;
+      color: black;
+    }
+
+    [data-theme="light"] #profileButton:hover {
+      background-color: #f3f4f6;
+    }
+
+    [data-theme="dark"] {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    [data-theme="dark"] nav a {
+      background-color: #1e293b;
+      color: #f8fafc !important;
+    }
+
+    [data-theme="dark"] nav a:hover:not(.active) {
+      background-color: #3b82f6;
+      color: #f8fafc !important;
+    }
+
+    [data-theme="dark"] nav a.active {
+      background-color: #475569;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+
+    button, [type="button"], [type="submit"] {
+      background-color: var(--primary);
+    }
+
+    button:hover, [type="button"]:hover, [type="submit"]:hover {
+      background-color: var(--primary-hover);
+    }
+
+    nav a {
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      margin: 0.25rem 0;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      right: -8px;
+      height: 60%;
+      width: 4px;
+      background: rgb(238, 234, 234);
+      border-radius: 2px;
+    }
+
+    nav a:hover:not(.active) {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
+      nav a {
+        min-width: fit-content;
+        margin: 0 0.25rem;
+      }
+      nav a.active::after {
+        right: auto;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+      }
+    }
+  </style>
+</head>
+<body class="transition-all duration-300 flex min-h-screen">
+
+  <!-- Sidebar -->
+  <aside class="w-72 h-screen sticky top-0 left-0 p-6 space-y-6 shadow-lg transition-all bg-opacity-90 backdrop-blur-md">
+    <div class="flex flex-col">
+      <div class="flex items-center">
+        <h2 class="text-4xl font-bold text-blue-500">FinTrack</h2>
+      </div>
+      <p class="text-xs text-blue-500">track your money</p>
+    </div>
+    <nav class="flex flex-col gap-2 text-blue-500">
+      <a href="Dashboard.html" class="flex items-center gap-2 text-lg transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        Dashboard
+      </a>
+      <a href="addTranctions.html" class="flex items-center gap-2 text-lg transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+        </svg>
+        Transactions
+      </a>
+      <a href="insights.html" class="flex items-center gap-2 text-lg transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+        </svg>
+        Insights
+      </a>
+      <a href="savings-goals.html" class="flex items-center gap-2 text-lg font-semibold transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
+        Savings Goals
+      </a>
+      <a href="ExpensesLimits.html" class="flex items-center gap-2 text-lg transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Expenses Limits
+      </a>
+      <a href="settings.html" class="flex items-center gap-2 text-lg transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+        </svg>
+        Settings
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Main Content Area -->
+  <div class="flex-1 flex flex-col p-6 md:p-10 overflow-y-auto">
+    <div class="flex items-center justify-between mb-6">
+      <h1 class="text-3xl font-semibold text-blue-500">Dashboard</h1>
+      <div class="flex items-center gap-4">
+        <button id="themeToggle" class="p-2 rounded-full border-2 border-gray-700 dark:border-gray-300 transition hover:scale-105" aria-label="Toggle Theme">
+          <svg id="themeIcon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+          </svg>
+        </button>
+        <div class="relative">
+          <button id="profileButton" 
+                  class="flex items-center gap-2 px-3 py-1 rounded-full transition-all duration-200 hover:bg-gray-200 dark:hover:bg-gray-600"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  aria-label="User Profile">
+            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-medium">U</div>
+            <span class="font-medium text-black dark:text-gray-200">User</span>
+          </button>
+          <div id="profileDropdown" 
+               class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 hidden transition-all duration-200 transform origin-top"
+               role="menu" aria-orientation="vertical" aria-labelledby="profileButton">
+            <div class="py-1" role="none">
+              <div class="px-4 py-2 text-sm text-gray-700 dark:text-gray-200" role="menuitem">john@example.com</div>
+              <button id="logoutButton" 
+                      class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600"
+                      role="menuitem">
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <main>
+      <!-- Content goes here -->
+    </main>
+  </div>
+
+  <script>
+    const htmlElement = document.documentElement;
+    const themeIcon = document.getElementById('themeIcon');
+    const themeToggle = document.getElementById('themeToggle');
+    const profileButton = document.getElementById('profileButton');
+    const profileDropdown = document.getElementById('profileDropdown');
+
+    // Function to update theme icon based on current theme
+    function updateThemeIcon() {
+      const isDark = htmlElement.getAttribute("data-theme") === "dark";
+      themeIcon.innerHTML = isDark ? 
+        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>' :
+        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>';
+    }
+
+    // Load theme from localStorage or system preference
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        htmlElement.setAttribute('data-theme', savedTheme);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        htmlElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      }
+      updateThemeIcon();
+    }
+
+    // Save theme to localStorage
+    function saveTheme(theme) {
+      localStorage.setItem('theme', theme);
+    }
+
+    // Toggle theme and save preference
+    themeToggle.addEventListener('click', () => {
+      const current = htmlElement.getAttribute("data-theme");
+      const newTheme = current === "dark" ? "light" : "dark";
+      htmlElement.setAttribute("data-theme", newTheme);
+      saveTheme(newTheme);
+      updateThemeIcon();
+    });
+
+    // Profile dropdown toggle
+    profileButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = profileButton.getAttribute('aria-expanded') === 'true';
+      profileDropdown.classList.toggle('hidden', isExpanded);
+      profileButton.setAttribute('aria-expanded', !isExpanded);
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', () => {
+      profileDropdown.classList.add('hidden');
+      profileButton.setAttribute('aria-expanded', 'false');
+    });
+
+    // Add active class to nav links based on current page
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('aside nav a');
+      const currentPage = window.location.pathname.split('/').pop();
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('font-semibold', 'bg-blue-500', 'text-white');
+        } else {
+          link.classList.remove('font-semibold', 'bg-blue-500', 'text-white');
+        }
+      });
+    });
+
+    // Initialize theme on page load
+    loadTheme();
+  </script>
+</body>
+</html>

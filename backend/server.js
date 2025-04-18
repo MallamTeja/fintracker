@@ -87,6 +87,11 @@ app.get('/api', (req, res) => {
     });
 });
 
+// Route to serve Insight.html for /insights.html request
+app.get('/insights.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/public', 'Insight.html'));
+});
+
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

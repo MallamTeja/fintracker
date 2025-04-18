@@ -18,6 +18,16 @@ app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'register.html'));
 });
 
+app.get('/savings-goals.html', (req, res) => {
+    console.log('Serving SavingGoals.html for /savings-goals.html request');
+    res.sendFile(path.join(__dirname, 'public', 'SavingGoals.html'));
+});
+
+// Route to serve Insight.html for /insights.html request
+app.get('/insights.html', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'Insight.html'));
+});
+
 // Fallback route - redirect to main page
 app.get('*', (req, res) => {
     res.redirect('/');

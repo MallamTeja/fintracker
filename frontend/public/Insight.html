@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FinTrack - Dashboard</title>
+  <title>FinTrack - Insights</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Chart.js CDN for visualizations -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -49,18 +49,23 @@
       color: var(--text-light);
     }
 
+    [data-theme="light"] {
+      background-color: var(--bg-light);
+      color: var(--text-light);
+    }
+
     [data-theme="light"] nav a {
-      background-color: var(rgb(243, 232, 176));
-      color: white !important;
+      background-color: white;
+      color: #1a1a1a !important;
     }
 
     [data-theme="light"] nav a:hover:not(.active) {
-      background-color: var(rgb(243, 232, 176));
-      color: white !important;
+      background-color: #3b82f6;
+      color: #1a1a1a !important;
     }
 
     [data-theme="light"] nav a.active {
-      background-color: var(--primary-hover-light);
+      background-color: #e5e7eb;
     }
 
     [data-theme="light"] #profileButton {
@@ -78,17 +83,17 @@
     }
 
     [data-theme="dark"] nav a {
-      background-color: var(--primary-dark);
-      color: white !important;
+      background-color: #1e293b;
+      color: #f8fafc !important;
     }
 
     [data-theme="dark"] nav a:hover:not(.active) {
-      background-color: var(--primary-hover-dark);
-      color: white !important;
+      background-color: #3b82f6;
+      color: #f8fafc !important;
     }
 
     [data-theme="dark"] nav a.active {
-      background-color: var(--primary-hover-dark);
+      background-color: #475569;
     }
 
     body {
@@ -109,19 +114,12 @@
       padding: 0.75rem 1rem;
       border-radius: 0.5rem;
       transition: all 0.3s ease;
-      background-color: var(--primary);
       margin: 0.25rem 0;
-      color: white;
       font-weight: 500;
       display: flex;
       align-items: center;
       gap: 0.75rem;
       position: relative;
-    }
-
-    nav a.active {
-      background-color: var(--primary-hover);
-      box-shadow: 0 0 0 2px rgba(255,255,255,0.2);
     }
 
     nav a.active::after {
@@ -135,7 +133,6 @@
     }
 
     nav a:hover:not(.active) {
-      background-color: var(--primary-hover);
       transform: translateX(4px);
     }
 
@@ -147,6 +144,7 @@
         padding-bottom: 8px;
       }
       nav a {
+        min-width: -webkit-fill-available; /* fallback for Samsung Internet */
         min-width: fit-content;
         margin: 0 0.25rem;
       }
@@ -216,46 +214,52 @@
       </div>
       <p class="text-xs text-blue-500">track your money</p>
     </div>
-    <nav class="flex flex-col gap-2 text-white">
-      <a href="mainpage.html" class="flex items-center gap-2 text-sm">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
-        </svg>
-        Dashboard
-      </a>
-      <a href="transactions.html" class="flex items-center gap-2 text-sm">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-        </svg>
-        Transactions
-      </a>
-      <a href="insights.html" class="flex items-center gap-2 text-sm">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-        </svg>
-        Insights
-      </a>
-      <a href="savings-goals.html" class="flex items-center gap-2 text-sm font-semibold text-blue-300">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
-        </svg>
-        Savings Goals
-      </a>
-      <a href="settings.html" class="flex items-center gap-2 text-sm">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-        </svg>
-        Settings
-      </a>
-    </nav>
+      <nav class="flex flex-col gap-2 text-blue-500">
+<a href="Dashboard.html" class="flex items-center gap-2 text-lg transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          Dashboard
+        </a>
+<a href="addTranctions.html" class="flex items-center gap-2 text-lg transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+          </svg>
+          Transactions
+        </a>
+<a href="Insight.html" class="flex items-center gap-2 text-lg font-semibold transition-colors duration-300 rounded-md bg-blue-500 text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+          Insights
+        </a>
+<a href="SavingGoals.html" class="flex items-center gap-2 text-lg transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          Savings Goals
+        </a>
+<a href="ExpensesLimits.html" class="flex items-center gap-2 text-lg transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          Expenses Limits
+        </a>
+<a href="Settings.html" class="flex items-center gap-2 text-lg transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+          Settings
+        </a>
+      </nav>
   </aside>
 
   <!-- Main Content Area -->
   <div class="flex-1 flex flex-col">
     <!-- Header from pagelayout.html -->
     <div class="flex items-center px-8 py-6 shadow-md sticky top-0 z-50 bg-opacity-90 backdrop-blur-md">
-      <h1 class="text-4xl font-bold text-blue-500 flex-1">Dashboard</h1>
+      <h1 class="text-4xl font-bold text-blue-500 flex-1">Insights</h1>
       <div class="flex items-center gap-2">
     <button id="themeToggle" class="p-2 rounded-full border-2 border-gray-700 dark:border-gray-300 transition hover:scale-105" type="button" aria-label="Toggle theme">
       <svg id="themeIcon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -302,8 +306,8 @@
             <option value="quarterly">Quarterly</option>
             <option value="custom">Custom</option>
           </select>
-          <input type="date" id="customStart" class="border rounded px-3 py-1 hidden dark:bg-gray-700 dark:text-gray-200" />
-          <input type="date" id="customEnd" class="border rounded px-3 py-1 hidden dark:bg-gray-700 dark:text-gray-200" />
+          <input type="date" id="customStart" aria-label="Custom start date" class="border rounded px-3 py-1 hidden dark:bg-gray-700 dark:text-gray-200" />
+          <input type="date" id="customEnd" aria-label="Custom end date" class="border rounded px-3 py-1 hidden dark:bg-gray-700 dark:text-gray-200" />
         </div>
 
         <!-- Income vs Expense Chart -->

@@ -215,19 +215,19 @@
           </svg>
           Dashboard
         </a>
-<a href="transactions.html" class="flex items-center gap-2 text-lg text-black transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-blue-500">
+<a href="addTranctions.html" class="flex items-center gap-2 text-lg text-black transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-blue-500">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
           </svg>
           Transactions
         </a>
-<a href="insights.html" class="flex items-center gap-2 text-lg text-black transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-blue-500">
+<a href="Insight.html" class="flex items-center gap-2 text-lg text-black transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-blue-500">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
           </svg>
           Insights
         </a>
-<a href="savings-goals.html" class="flex items-center gap-2 text-lg font-semibold text-black transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-blue-500">
+<a href="SavingGoals.html" class="flex items-center gap-2 text-lg font-semibold text-black transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-blue-500">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
           </svg>
@@ -239,7 +239,7 @@
           </svg>
           Expenses Limits
         </a>
-        <a href="settings.html" class="flex items-center gap-2 text-lg text-black transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-blue-500">
+<a href="Settings.html" class="flex items-center gap-2 text-lg font-semibold text-black transition-colors duration-300 rounded-md hover:bg-blue-500 hover:text-blue-500">
           <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
@@ -254,6 +254,36 @@
     <!-- Header from pagelayout.html -->
     <div class="flex items-center px-8 py-6 shadow-md sticky top-0 z-50 bg-opacity-90 backdrop-blur-md">
       <h1 class="text-4xl font-bold text-blue-500 flex-1"> Add Transactions </h1>
+      <div class="flex items-center gap-2">
+        <button id="themeToggle" class="p-2 rounded-full border-2 border-gray-700 dark:border-gray-300 transition hover:scale-105">
+          <svg id="themeIcon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+          </svg>
+        </button>
+        <div class="relative">
+          <button id="profileButton" 
+                  class="flex items-center gap-2 px-3 py-1 rounded-full transition-all duration-200 hover:bg-gray-200 dark:hover:bg-gray-600"
+                  aria-expanded="false"
+                  aria-haspopup="true">
+            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-medium">U</div>
+            <span class="font-medium text-black dark:text-gray-200">User</span>
+          </button>
+          <div id="profileDropdown" 
+               class="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-700 ring-1 ring-black ring-opacity-5 hidden transition-all duration-200 transform origin-top">
+            <div class="py-1" role="menu" aria-orientation="vertical">
+              <div class="px-4 py-2 text-sm text-gray-700 dark:text-gray-200">john@example.com</div>
+              <button id="logoutButton" 
+                      class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600"
+                      role="menuitem">
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+=======
+      <h1 class="text-4xl font-bold text-blue-500 flex-1"> Saving Goals </h1>
       <div class="flex items-center gap-2">
         <button id="themeToggle" class="p-2 rounded-full border-2 border-gray-700 dark:border-gray-300 transition hover:scale-105">
           <svg id="themeIcon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -310,7 +340,33 @@
         '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>';
     }
 
-    // Toggle profile dropdown on click
+    // Load theme from localStorage or system preference
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        htmlElement.setAttribute('data-theme', savedTheme);
+      } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        htmlElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      }
+      updateThemeIcon();
+    }
+
+    // Save theme to localStorage
+    function saveTheme(theme) {
+      localStorage.setItem('theme', theme);
+    }
+
+    // Toggle theme and save preference
+    themeToggle.addEventListener('click', () => {
+      const current = htmlElement.getAttribute("data-theme");
+      const newTheme = current === "dark" ? "light" : "dark";
+      htmlElement.setAttribute("data-theme", newTheme);
+      saveTheme(newTheme);
+      updateThemeIcon();
+    });
+
+    // Profile dropdown toggle
     profileButton.addEventListener('click', (e) => {
       e.stopPropagation();
       const isExpanded = profileButton.getAttribute('aria-expanded') === 'true';
@@ -324,12 +380,22 @@
       profileButton.setAttribute('aria-expanded', 'false');
     });
 
-    // Theme toggle functionality
-    themeToggle.addEventListener('click', () => {
-      const current = htmlElement.getAttribute("data-theme");
-      htmlElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
-      updateThemeIcon();
+    // Add active class to nav links based on current page
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('aside nav a');
+      const currentPage = window.location.pathname.split('/').pop();
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+          link.classList.add('font-semibold', 'bg-blue-500', 'text-white');
+        } else {
+          link.classList.remove('font-semibold', 'bg-blue-500', 'text-white');
+        }
+      });
     });
+
+    // Initialize theme on page load
+    loadTheme();
+  </script>
 
 
 
